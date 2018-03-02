@@ -67,11 +67,15 @@
             for(var abilityName in players[i].abilities) {
                 var ability = [
                     "Name: <b>" + abilityName + "</b>",
-                    "Bind: <b>" + players[i].abilities[abilityName].bind + "</b>",
-                    "Cooldown: <b>" + players[i].abilities[abilityName].cooldown + "</b>",
-                    "Speed: <b>" + players[i].abilities[abilityName].speed + "</b>",
-                    "Duration: <b>" + players[i].abilities[abilityName].duration + "</b>",
                 ];
+                
+                if (players[i].abilities[abilityName].cooldown)
+                    ability.push("Cooldown: <b>" + players[i].abilities[abilityName].cooldown + "</b>");
+                if (players[i].abilities[abilityName].speed)
+                    ability.push("Speed: <b>" + players[i].abilities[abilityName].speed + "</b>");
+                if (players[i].abilities[abilityName].duration)
+                    ability.push("Duration: <b>" + players[i].abilities[abilityName].duration + "</b>");
+
                 if (players[i].abilities[abilityName].cost) {
                     if (players[i].abilities[abilityName].cost.energy) {
                         ability.push("Cost: <b>" + players[i].abilities[abilityName].cost.energy + "</b> Energy");

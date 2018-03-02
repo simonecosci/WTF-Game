@@ -108,13 +108,47 @@ WTF.Behaviors.Tank = WTF.Behaviors.Abstract.extend({
 
     init: function (options, owner) {
         var options = $.extend(true, {
-            description: "Attack the closest enemy",
+            description: "Defend himself and Attack the closest enemy",
             label: "Tank"
         }, options);
         WTF.Behaviors.Abstract.fn.init.call(this, options, owner);
         this.priority = [
             WTF.AbilityTypes.Defense,
             WTF.AbilityTypes.Attack,
+            WTF.AbilityTypes.Heal
+        ];
+    },
+
+});
+
+WTF.Behaviors.Healer = WTF.Behaviors.Abstract.extend({
+
+    init: function (options, owner) {
+        var options = $.extend(true, {
+            description: "Heal the closest friendly target",
+            label: "Healer"
+        }, options);
+        WTF.Behaviors.Abstract.fn.init.call(this, options, owner);
+        this.priority = [
+            WTF.AbilityTypes.Heal,
+            WTF.AbilityTypes.Defense,
+            WTF.AbilityTypes.Attack
+        ];
+    },
+});
+
+
+WTF.Behaviors.Attacker = WTF.Behaviors.Abstract.extend({
+
+    init: function (options, owner) {
+        var options = $.extend(true, {
+            description: "Attack the closest enemy",
+            label: "Attacker"
+        }, options);
+        WTF.Behaviors.Abstract.fn.init.call(this, options, owner);
+        this.priority = [
+            WTF.AbilityTypes.Attack,
+            WTF.AbilityTypes.Defense,
             WTF.AbilityTypes.Heal
         ];
     },

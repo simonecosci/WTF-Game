@@ -1,6 +1,7 @@
 WTF.Game = function (options) {
     var self = this;
     self.started = false;
+    self.key = options.key;
     self.options = options;
 
     WTF.game = self;
@@ -63,7 +64,9 @@ WTF.Game = function (options) {
             change: function (e) {
                 var tr = e.sender.select();
                 var item = this.dataItem(tr);
-                WTF.find(item.id).select();
+                var player = WTF.find(item.id);
+                if (player)
+                    player.select();
             },
             columns: [
                 {
@@ -260,7 +263,7 @@ WTF.Game = function (options) {
     };
     
     self.gameover = function (callback) {
-        $(self).on("gameover", function(result) {
+        $(self).on("gameover", function(e, result) {
             $(self).off("gameover");
             callback.call(self, result);
         });

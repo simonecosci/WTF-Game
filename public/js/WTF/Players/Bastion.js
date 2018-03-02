@@ -1,15 +1,15 @@
 WTF.TeamSelector.addPlayer({
-    name: "The Reaper",
+    name: "Bastion",
     speed: 80,
-    width: 90,
-    height: 90,
+    width: 80,
+    height: 80,
     image: {
-        stop: "/images/players/reaper.png",
-        move: "/images/players/reaper.png",
+        stop: "/images/players/bastion.png",
+        move: "/images/players/bastion.png",
     },
     health: {
-        regen: 2,
-        max: 1000
+        regen: 1,
+        max: 1200
     },
     energy: {
         regen: 1,
@@ -23,31 +23,27 @@ WTF.TeamSelector.addPlayer({
             cooldown: .2,
             damage: {
                 min: 0,
-                max: 200
+                max: 100
             },
             cost: {
                 energy: 2
-            }
+            },
         },
         "Shot": {
             label: "Shot",
             bind: "2",
-            cooldown: 1,
-            speed: 500,
+            cooldown: 2,
+            speed: 600,
             damage: {
                 min: 30,
                 max: 750
             },
             cost: {
                 energy: 5
-            }
-        },
-        "ShadowStep": {
-            label: "Shot",
-            bind: "3",
-            cooldown: 10,
-            cost: {
-                energy: 15
+            },
+            range: {
+                min: 10,
+                max: 700
             }
         }
     },

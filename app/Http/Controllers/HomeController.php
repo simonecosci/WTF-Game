@@ -56,9 +56,7 @@ class HomeController extends Controller {
                     'name' => 'required|string|max:255|unique:teams',
                     'players' => 'required|array'
         ]);
-
         $players = $this->getPlayers();
-
         if ($request->isMethod('post')) {
             if (!$validator->fails()) {
                 $team = (new Team())->fill([
@@ -153,9 +151,6 @@ class HomeController extends Controller {
     }
     
     public function result(Request $request) {
-        if (!$request->isMethod('post')) {
-            throw new \BadMethodCallException();
-        }
         
         if (!$request->has('key') || !$request->has('result')) {
             throw new Exception('Missing parameters', 500);
@@ -164,8 +159,10 @@ class HomeController extends Controller {
         if (empty($request->key) || empty($request->result)) {
             throw new Exception('Missing parameters', 500);
         }
-        
-        $fight = Fight::with('team')->whereKey($request->key)->firstOrFail();
+        $fight = Fight::with('team')->where('key', $request->key)->first();
+        if (empty($fight)) {
+            return abort(401, "Key not found");
+        }
         if ($fight->team->user_id !== Auth::id()) {
             return abort(401, "This is not your team");
         }
@@ -177,6 +174,7 @@ class HomeController extends Controller {
         } else {
             $message = 'Will be better next time. You lost the match';
         }
+        $fight->save();
         $team->played += 1;
         $team->save();
         return $message;

@@ -23,6 +23,7 @@
                     <table id="teams" class="table table-bordered table-condensed table-striped">
                         <thead>
                             <tr>
+                                <th>&nbsp;</th>
                                 <th>Name</th>
                                 <th>Played</th>
                                 <th>Won</th>
@@ -36,6 +37,9 @@
 
                             @foreach($teams as $team)
                             <tr>
+                                <td>
+                                    <a href="{{ route('team', ['id' => $team->id]) }}" class="btn btn-primary btn-sm">View</a>
+                                </td>
                                 <td>{{ $team->name }}</td>
                                 <td>{{ $team->played }}</td>
                                 <td>{{ $team->won }}</td>

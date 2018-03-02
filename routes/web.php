@@ -36,5 +36,5 @@ Route::any('/create-team', 'HomeController@createTeam')->name('create-team');
 Route::get('/team/{id}', 'HomeController@team')->name('team');
 Route::get('/play/{id}', 'HomeController@play')->name('play');
 Route::get('/fight/{id}/{against}', 'HomeController@fight')->name('fight');
-Route::post('/result', 'HomeController@result');
+Route::get('/result', 'HomeController@result');
 

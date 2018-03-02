@@ -141,6 +141,8 @@ WTF.Game.Player = WTF.Game.Object.extend({
             })(self.abilities[name]);
         }
         $(document).off("keydown").on("keydown", function (e) {
+            if (!WTF.selection || !WTF.selection.target)
+                return;
             var target = WTF.selection.target;
             var key = parseInt(e.keyCode || e.which);
             if (e.altKey) {

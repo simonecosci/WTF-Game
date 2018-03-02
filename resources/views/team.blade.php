@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <a class="btn btn-primary" href="{{ route('home') }}">Back to dashboard</a>
     <div class="row">
         <div class="col-md-4">
             <small>Won</small>
@@ -66,57 +67,68 @@
             {!! $player['options'] !!}  
         );
         @endforeach
-
-        for (var i = 0; i < players.length; i++) {
-            var row = $("#row-template").html();
-            var info = [
-                "Name: <b>" + players[i].name + "</b>",
-                "Speed: <b>" + players[i].speed + "</b> px/sec",
-                "Hitbox: <b>" + players[i].width + "x" + players[i].height + "</b>",
-                "Health: <b>" + players[i].health.max + "</b> (" + players[i].health.regen + "/sec regen.)",
-                "Energy: <b>" + players[i].energy.max + "</b> (" + players[i].energy.regen + "/sec regen.)",
-                "Behavior: <b>" + players[i].behavior + "</b>"
-            ];
-            $("#players tbody").append(row);
-            var last = $("#players tbody tr:last");
-            last.find(".player-img img")
-                    .attr("src", players[i].image.stop)
-                    .css({
-                        width: "80px",
-                        height: "auto"
-                    });
-            last.find(".player-info").html(info.join("<br>"));
-            var index = 1;
-            for(var abilityName in players[i].abilities) {
-                var ability = [
-                    "Name: <b>" + abilityName + "</b>",
-                    "Bind: <b>" + players[i].abilities[abilityName].bind + "</b>",
-                    "Cooldown: <b>" + players[i].abilities[abilityName].cooldown + "</b>",
-                    "Speed: <b>" + players[i].abilities[abilityName].speed + "</b>",
-                    "Duration: <b>" + players[i].abilities[abilityName].duration + "</b>",
-                ];
-                if (players[i].abilities[abilityName].cost) {
-                    if (players[i].abilities[abilityName].cost.energy) {
-                        ability.push("Cost: <b>" + players[i].abilities[abilityName].cost.energy + "</b> Energy");
-                    }
-                    if (players[i].abilities[abilityName].cost.health) {
-                        ability.push("Cost: <b>" + players[i].abilities[abilityName].cost.health + "</b> Health");
-                    }
-                }
-                if (players[i].abilities[abilityName].range) {
-                    ability.push("Range: <b>" + players[i].abilities[abilityName].range.min + " - " + players[i].abilities[abilityName].range.max + "</b>");
-                }
-                if (players[i].abilities[abilityName].damage) {
-                    ability.push("Damage: <b>" + players[i].abilities[abilityName].damage.min + " - " + players[i].abilities[abilityName].damage.max + "</b>");
-                }
-                if (players[i].abilities[abilityName].heal) {
-                    ability.push("Heal: <b>" + players[i].abilities[abilityName].heal.min + " - " + players[i].abilities[abilityName].heal.max + "</b>");
+        
+        
+        var members = {!! $team->teammembers->toJson() !!};
+        for (var m = 0; m < members.length; m++) {
+            
+            for (var i = 0; i < players.length; i++) {
+                
+                if (members[m].name != players[i].name) {
+                    continue;
                 }
                 
-                last.find(".player-ability" + index).html(ability.join("<br>"));
-                index++;
+                var row = $("#row-template").html();
+                var info = [
+                    "Name: <b>" + players[i].name + "</b>",
+                    "Speed: <b>" + players[i].speed + "</b> px/sec",
+                    "Hitbox: <b>" + players[i].width + "x" + players[i].height + "</b>",
+                    "Health: <b>" + players[i].health.max + "</b> (" + players[i].health.regen + "/sec regen.)",
+                    "Energy: <b>" + players[i].energy.max + "</b> (" + players[i].energy.regen + "/sec regen.)",
+                    "Behavior: <b>" + players[i].behavior + "</b>"
+                ];
+                $("#players tbody").append(row);
+                var last = $("#players tbody tr:last");
+                last.find(".player-img img")
+                        .attr("src", players[i].image.stop)
+                        .css({
+                            width: "80px",
+                            height: "auto"
+                        });
+                last.find(".player-info").html(info.join("<br>"));
+                var index = 1;
+                for(var abilityName in players[i].abilities) {
+                    var ability = [
+                        "Name: <b>" + abilityName + "</b>",
+                        "Bind: <b>" + players[i].abilities[abilityName].bind + "</b>",
+                        "Cooldown: <b>" + players[i].abilities[abilityName].cooldown + "</b>",
+                        "Speed: <b>" + players[i].abilities[abilityName].speed + "</b>",
+                        "Duration: <b>" + players[i].abilities[abilityName].duration + "</b>",
+                    ];
+                    if (players[i].abilities[abilityName].cost) {
+                        if (players[i].abilities[abilityName].cost.energy) {
+                            ability.push("Cost: <b>" + players[i].abilities[abilityName].cost.energy + "</b> Energy");
+                        }
+                        if (players[i].abilities[abilityName].cost.health) {
+                            ability.push("Cost: <b>" + players[i].abilities[abilityName].cost.health + "</b> Health");
+                        }
+                    }
+                    if (players[i].abilities[abilityName].range) {
+                        ability.push("Range: <b>" + players[i].abilities[abilityName].range.min + " - " + players[i].abilities[abilityName].range.max + "</b>");
+                    }
+                    if (players[i].abilities[abilityName].damage) {
+                        ability.push("Damage: <b>" + players[i].abilities[abilityName].damage.min + " - " + players[i].abilities[abilityName].damage.max + "</b>");
+                    }
+                    if (players[i].abilities[abilityName].heal) {
+                        ability.push("Heal: <b>" + players[i].abilities[abilityName].heal.min + " - " + players[i].abilities[abilityName].heal.max + "</b>");
+                    }
+
+                    last.find(".player-ability" + index).html(ability.join("<br>"));
+                    index++;
+                }
             }
         }
+
     });
 </script>
 @endsection

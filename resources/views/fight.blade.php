@@ -57,14 +57,13 @@
                         @endforeach
                     @endforeach
 
-                    game.init().start().gameover(function(result) {
+                    game.init().start().gameover(function(data) {
                         $.ajax({
                             url: "/result",
-                            type: "POST",
                             dataType: "text",
                             data: {
-                                result: result,
-                                key: this.key
+                                result: data.result,
+                                key: game.key
                             },
                             error: function (xhr, status, msg) {
                                 console.log(xhr, status, msg);
