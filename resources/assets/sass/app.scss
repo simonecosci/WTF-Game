@@ -1,0 +1,27 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+.social-buttons {
+    a {
+        color: white;
+        display: inline-block;
+        width: 30%;
+        &.facebook { background-color: #3b5998; }
+        &.twitter { background-color: #55acee; }
+        &.google { background-color: #dd4b39; }
+        .fa {
+            font-size: 200%;
+        }
+        &:hover {
+            color: white;
+        }
+    }
+}
