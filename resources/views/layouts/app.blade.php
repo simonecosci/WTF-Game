@@ -21,7 +21,13 @@
 
     <script type="text/javascript" src="https://www.google.com/jsapi?key=AIzaSyA6258oRzlOa_BFYJ4R6jOxQ4_MTMez8L8"></script>
     <script type="text/javascript">(function(x){x.className = 'no-fouc'})(document.documentElement)</script>
-    
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-9920981449158303",
+        enable_page_level_ads: true
+      });
+    </script>
 </head>
 <body>
     <div id="fb-root"></div>
