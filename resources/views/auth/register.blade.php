@@ -61,6 +61,20 @@
                             </div>
                         </div>
 
+                        @if (config('app.recaptcha'))
+                        <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Captcha</label>
+                            <div class="col-md-6">
+                                <div class="g-recaptcha" data-sitekey="{{ config('app.RE_CAP_SITE') }}"></div>
+                                @if ($errors->has('g-recaptcha-response'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
+						
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

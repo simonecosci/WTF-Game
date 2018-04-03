@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Traits\CaptchaTrait;
 
 class LoginController extends Controller
 {
@@ -18,7 +19,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, CaptchaTrait;
 
     /**
      * Where to redirect users after login.
@@ -35,5 +36,30 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+	
+	/**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function validateLogin(Request $request) {
+        $res = $request->get('g-recaptcha-response');
+        $request->merge(['captcha' => $this->captchaCheck($res)]);
+        $rules = [
+            $this->username() => 'required|string',
+            'password' => 'required|string'
+        ];
+        $messages = [];
+        if (config('app.recaptcha')) {
+            $rules['g-recaptcha-response'] = 'required';
+            $rules['captcha'] = 'accepted';
+            $messages = [
+                'g-recaptcha-response.required' => 'Captcha is required',
+                'captcha.min' => 'Wrong captcha, please try again.'
+            ];
+        }
+        $this->validate($request, $rules, $messages);
     }
 }
