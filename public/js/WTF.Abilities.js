@@ -629,7 +629,7 @@ WTF.Abilities.ShadowStep = WTF.Abilities.Abstract.extend({
         if (!self.check())
             return false;
         self.cooldown();
-        self.owner.moveTo(self.owner.target.position());
+        self.owner.position(self.owner.target.position());
         return true;
     }
 });
@@ -659,7 +659,7 @@ WTF.Abilities.Grab = WTF.Abilities.Abstract.extend({
         if (!self.check())
             return false;
         self.cooldown();
-        self.owner.target.moveTo(self.owner.position());
+        self.owner.target.position(self.owner.position());
         return true;
     }
 });

@@ -43,7 +43,7 @@ WTF.TeamSelector.addPlayer({
             }
         },
         "ShadowStep": {
-            label: "Shot",
+            label: "Shadow Step",
             bind: "3",
             cooldown: 10,
             cost: {
