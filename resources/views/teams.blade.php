@@ -37,6 +37,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $teams->links() }}
                 </div>
             </div>
         </div>

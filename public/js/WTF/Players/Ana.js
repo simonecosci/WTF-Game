@@ -45,6 +45,23 @@ WTF.TeamSelector.addPlayer({
                 min: 50,
                 max: 800
             }
+        },
+        "HealingShot": {
+            label: "Healing Shot",
+            bind: "3",
+            cooldown: 3,
+            speed: 700,
+            heal: {
+                min: 30,
+                max: 750
+            },
+            cost: {
+                energy: 5
+            },
+            range: {
+                min: 0,
+                max: 500
+            }
         }
     },
     behavior: "Attacker"

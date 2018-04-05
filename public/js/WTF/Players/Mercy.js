@@ -1,15 +1,15 @@
 WTF.TeamSelector.addPlayer({
-    name: "Roadhog",
+    name: "Mercy",
     speed: 80,
-    width: 90,
-    height: 90,
+    width: 80,
+    height: 80,
     image: {
-        stop: "/images/players/roadhog.png",
-        move: "/images/players/roadhog.png",
+        stop: "/images/players/mercy.png",
+        move: "/images/players/mercy.png",
     },
     health: {
         regen: 2,
-        max: 2000
+        max: 800
     },
     energy: {
         regen: 1,
@@ -23,33 +23,41 @@ WTF.TeamSelector.addPlayer({
             cooldown: .2,
             damage: {
                 min: 0,
-                max: 200
+                max: 100
             },
             cost: {
                 energy: 2
-            }
+            },
         },
         "Shot": {
             label: "Shot",
             bind: "2",
-            cooldown: 1,
-            speed: 300,
+            cooldown: 2,
+            speed: 700,
             damage: {
                 min: 30,
                 max: 750
             },
             cost: {
                 energy: 5
+            },
+            range: {
+                min: 50,
+                max: 800
             }
         },
-        "Grab": {
-            label: "Grab",
-            bind: "3",
-            cooldown: 15,
+        "Heal": {
+            label: "Heal",
+            bind: "4",
+            cooldown: 5,
+            heal: {
+                min: 50,
+                max: 300
+            },
             cost: {
-                energy: 20
+                energy: 10
             }
-        }
+        },
     },
-    behavior: "Tank"
+    behavior: "Healer"
 });

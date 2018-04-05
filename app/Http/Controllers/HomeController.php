@@ -82,6 +82,14 @@ class HomeController extends Controller {
                         ->withErrors($validator);
     }
 
+    public function delete($id) {
+        $team = Team::with("teammembers")->findOrFail($id);
+        if ($team->user_id !== Auth::id()) {
+            return abort(401, "This is not your team");
+        }
+        return redirect()->to(route('teams'));
+    }
+
     public function team($id) {
         $players = $this->getPlayers();
         $team = Team::with("teammembers")->findOrFail($id);

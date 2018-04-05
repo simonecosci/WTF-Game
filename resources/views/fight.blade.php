@@ -30,12 +30,12 @@
 
                 var game = new WTF.Game({
                     key: "{{ $key }}",
-                    type: "1vs1",
+                    type: "{{ count($teams['team']->teammembers) }}vs{{ count($teams['team']->teammembers) }}",
                     stage: $("#stage"),
                     panels: $("#panels"),
                     toolbar: $("#toolbar"),
                     notification: $("#notification"),
-                    background: "/images/stages/bg2.jpg"
+                    background: "/images/stages/bg" + [0,1,2].sort(() => Math.random() - 0.5)[0] + ".jpg"
                 });
                 
                 var players = [

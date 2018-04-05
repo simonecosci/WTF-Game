@@ -1,15 +1,15 @@
 WTF.TeamSelector.addPlayer({
-    name: "Bastion",
+    name: "Junkrat",
     speed: 80,
     width: 80,
     height: 80,
     image: {
-        stop: "/images/players/bastion.png",
-        move: "/images/players/bastion.png",
+        stop: "/images/players/junkrat.png",
+        move: "/images/players/junkrat.png",
     },
     health: {
-        regen: 1,
-        max: 1200
+        regen: 2,
+        max: 900
     },
     energy: {
         regen: 1,
@@ -29,32 +29,29 @@ WTF.TeamSelector.addPlayer({
                 energy: 2
             },
         },
-        "Shot": {
-            label: "Shot",
+        "Bomb": {
+            label: "Bomb",
             bind: "2",
             cooldown: 2,
-            speed: 600,
-            damage: {
-                min: 30,
-                max: 750
-            },
-            cost: {
-                energy: 5
-            },
+            speed: 200,
             range: {
-                min: 10,
+                min: 0,
+                max: 400
+            },
+            damage: {
+                min: 100,
                 max: 700
-            }
-        },
-        "Shield": {
-            label: "Shield",
-            bind: "3",
-            cooldown: 30,
-            duration: 15,
+            },
             cost: {
-                energy: 10
+                energy: 15
             }
         },
+        "Trap": {
+            label: "Trap",
+            bind: "3",
+            cooldown: 20,
+            duration: 7
+        }
     },
     behavior: "Attacker"
 });

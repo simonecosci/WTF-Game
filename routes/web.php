@@ -19,7 +19,7 @@ Route::get('/redirect/{provider}', 'Auth\SocialAuthController@redirect');
 Route::get('/callback/{provider}', 'Auth\SocialAuthController@callback');
 
 Route::get('/teams', function () {
-    $teams = app()->make(App\Team::class)->with('teammembers')->get();
+    $teams = app()->make(App\Team::class)->with('teammembers')->paginate(20);
     $players = app()->make(App\Http\Controllers\HomeController::class)->getPlayers();
     return view('teams')->with(compact('teams', 'players'));
 })->name('teams');
@@ -29,11 +29,16 @@ Route::get('/players', function () {
     return view('players')->with(compact('players'));
 })->name('players');
 
+Route::get('/how', function () {
+    return view('how');
+})->name('how');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::any('/create-team', 'HomeController@createTeam')->name('create-team');
 Route::get('/team/{id}', 'HomeController@team')->name('team');
+Route::get('/delete/{id}', 'HomeController@delete')->name('delete');
 Route::get('/play/{id}', 'HomeController@play')->name('play');
 Route::get('/fight/{id}/{against}', 'HomeController@fight')->name('fight');
 Route::get('/result', 'HomeController@result');

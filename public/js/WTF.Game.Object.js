@@ -14,7 +14,7 @@ WTF.Game.Object = kendo.Class.extend({
         this.options = $.extend(true, this.defaults, options);
         this.height = this.options.height;
         this.width = this.options.width;
-        this.speed = options.speed || 0;
+        this.speed = options && options.speed ? options.speed : 0;
         this.id = kendo.guid();
         var element = $("<div/>");
         element.attr("id", this.id);

@@ -33,3 +33,18 @@ WTF.Elements.Bomb = WTF.Elements.Abstract.extend({
     }
     
 });
+
+WTF.Elements.Trap = WTF.Elements.Abstract.extend({
+
+    init: function(options) {
+        this.activated = false;
+        WTF.Elements.Abstract.fn.init.call(this, options);
+        this.element.css({
+            borderRadius: "30%",
+            backgroundColor: "yellow",
+            display: "inline-block",
+            border: "1px solid white"
+        });
+    }
+    
+});

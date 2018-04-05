@@ -26,7 +26,11 @@ WTF.Effects.Explosion = WTF.Game.Object.extend({
             top: position.top
         });
         self.element.addClass("explosion");
-        var hits = WTF.isInRange(self.position(), self.options.width);
+        var pos = {
+            left: parseInt(self.position().left + (self.options.width / 2)),
+            top: parseInt(self.position().top + (self.options.height / 2))
+        };
+        var hits = WTF.isInRange(self.position() , self.options.width);
         self.element.trigger("hits", { hits: hits });
         setTimeout(function () {
             self.element.fadeOut("fast", function () {

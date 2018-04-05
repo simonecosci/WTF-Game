@@ -2,7 +2,7 @@
 
 return [
 
-    'recaptcha' => false,
+    'recaptcha' => true,
     'RE_CAP_SITE' => '6LewbE4UAAAAAH_oEzDlR5W5cLLiwJAMJ7wsxiqC',
     'RE_CAP_SECRET' => '6LewbE4UAAAAANLYWyLqO3027K3XtTfOb8o0z2V4',
 	

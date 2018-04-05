@@ -1,20 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .score {
+        padding: 10px; 
+        margin: 10px; 
+        width: 120px; 
+        display: inline-block; 
+        border: 3px solid #ccc; 
+        background: yellow; 
+        color: #3097D1; 
+        border-radius: 50%;
+    }
+</style>
 <div class="container">
     <a class="btn btn-primary" href="{{ route('home') }}">Back to dashboard</a>
     <div class="row">
-        <div class="col-md-4">
-            <small>Won</small>
-            <h2>{{ $team->won }}</h2>
+        <div class="col-xs-4 text-center">
+            <div class="score">
+                <small>Won</small>
+                <h2>{{ $team->won }}</h2>
+            </div>
         </div>
-        <div class="col-md-4">
-            <small>Played</small>
-            <h2>{{ $team->played }}</h2>
+        <div class="col-xs-4 text-center">
+            <div class="score">
+                <small>Played</small>
+                <h2>{{ $team->played }}</h2>
+            </div>
         </div>
-        <div class="col-md-4">
-            <small>Rank</small>
-            <h2>{{ $team->won > 0 ? number_format($team->played / $team->won * 100, 2) : 0 }}%</h2>
+        <div class="col-xs-4 text-center">
+            <div class="score">
+                <small>Rating</small>
+                <h2>{{ $team->won > 0 ? number_format($team->won / $team->played * 100, 2) : 0 }}%</h2>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -37,7 +55,8 @@
                             <tr>
                                 <td colspan="5">
                                     <div class="text-center">
-                                        <a href="{{ route('play', ['id' => $team->id ]) }}" class="btn btn-primary">Play</a>
+                                        <a href="{{ route('play', ['id' => $team->id ]) }}" class="btn btn-primary">Play</a> 
+                                        <a href="{{ route('delete', ['id' => $team->id ]) }}" class="btn btn-error">Delete</a> 
                                     </div>
                                 </td>
                             </tr>

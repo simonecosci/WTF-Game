@@ -1,15 +1,15 @@
 WTF.TeamSelector.addPlayer({
-    name: "Roadhog",
-    speed: 80,
-    width: 90,
-    height: 90,
+    name: "Reinhardt",
+    speed: 50,
+    width: 150,
+    height: 150,
     image: {
-        stop: "/images/players/roadhog.png",
-        move: "/images/players/roadhog.png",
+        stop: "/images/players/reinhardt.png",
+        move: "/images/players/reinhardt.png",
     },
     health: {
-        regen: 2,
-        max: 2000
+        regen: 5,
+        max: 6000
     },
     energy: {
         regen: 1,
@@ -23,33 +23,33 @@ WTF.TeamSelector.addPlayer({
             cooldown: .2,
             damage: {
                 min: 0,
-                max: 200
+                max: 100
             },
             cost: {
                 energy: 2
-            }
-        },
-        "Shot": {
-            label: "Shot",
-            bind: "2",
-            cooldown: 1,
-            speed: 300,
-            damage: {
-                min: 30,
-                max: 750
             },
-            cost: {
-                energy: 5
-            }
         },
-        "Grab": {
-            label: "Grab",
-            bind: "3",
-            cooldown: 15,
+        "Charge": {
+            label: "Charge",
+            bind: "2",
+            cooldown: 14,
+            damage: {
+                min: 200,
+                max: 1000
+            },
             cost: {
                 energy: 20
             }
-        }
+        },
+        "Shield": {
+            label: "Shield",
+            bind: "3",
+            cooldown: 30,
+            duration: 15,
+            cost: {
+                energy: 10
+            }
+        },
     },
     behavior: "Tank"
 });

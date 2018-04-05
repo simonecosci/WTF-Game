@@ -1,15 +1,15 @@
 WTF.TeamSelector.addPlayer({
-    name: "Bastion",
-    speed: 80,
-    width: 80,
-    height: 80,
+    name: "Genji",
+    speed: 130,
+    width: 85,
+    height: 85,
     image: {
-        stop: "/images/players/bastion.png",
-        move: "/images/players/bastion.png",
+        stop: "/images/players/genji.png",
+        move: "/images/players/genji.png",
     },
     health: {
-        regen: 1,
-        max: 1200
+        regen: 2,
+        max: 1100
     },
     energy: {
         regen: 1,
@@ -20,17 +20,17 @@ WTF.TeamSelector.addPlayer({
         "Melee": {
             label: "Melee",
             bind: "1",
-            cooldown: .2,
+            cooldown: .6,
             damage: {
-                min: 0,
-                max: 100
+                min: 10,
+                max: 300
             },
             cost: {
-                energy: 2
-            },
+                energy: 3
+            }
         },
         "Shot": {
-            label: "Shot",
+            label: "Shuriken",
             bind: "2",
             cooldown: 2,
             speed: 600,
@@ -46,11 +46,14 @@ WTF.TeamSelector.addPlayer({
                 max: 700
             }
         },
-        "Shield": {
-            label: "Shield",
+        "Sprint": {
+            label: "Sprint",
             bind: "3",
-            cooldown: 30,
-            duration: 15,
+            cooldown: 14,
+            damage: {
+                min: 10,
+                max: 300
+            },
             cost: {
                 energy: 10
             }

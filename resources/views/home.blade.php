@@ -66,12 +66,12 @@
 <script>
     $(document).ready(function () {
         var players = [];
-                @foreach($players as $player)
+        @foreach($players as $player)
         players.push(
         {!! $player['options'] !!}
         );
         @endforeach
-                console.log(players);
+        console.log(players);
         for (var i = 0; i < players.length; i++) {
             $("[title='" + players[i].name + "']").attr("src", players[i].image.stop);
         }
