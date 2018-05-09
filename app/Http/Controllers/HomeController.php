@@ -87,7 +87,8 @@ class HomeController extends Controller {
         if ($team->user_id !== Auth::id()) {
             return abort(401, "This is not your team");
         }
-        return redirect()->to(route('teams'));
+        $team->delete();
+        return redirect()->to(route('home'));
     }
 
     public function team($id) {
@@ -108,7 +109,7 @@ class HomeController extends Controller {
         $teams = Team::with("teammembers")
                 ->where('members', $team->members)
                 ->where('user_id', '!=', Auth::id())
-                ->get();
+                ->paginate(10);
         return view('play')->with(compact('team', 'teams', 'players'));
     }
 
