@@ -19,18 +19,24 @@ WTF.Effects.Explosion = WTF.Game.Object.extend({
             opacity: 1
         });
     },
-    show: function (position) {
+    show: function (position, range) {
         var self = this;
         self.element.css({
             left: position.left,
-            top: position.top
+            top: position.top,
         });
         self.element.addClass("explosion");
-        var pos = {
-            left: parseInt(self.position().left + (self.options.width / 2)),
-            top: parseInt(self.position().top + (self.options.height / 2))
-        };
-        var hits = WTF.isInRange(self.position() , self.options.width);
+        var hits = [];
+        WTF.objects.forEach(e => {
+            if (!e.type)
+                return;
+            if (!e.options.hitable)
+                return;
+            var distance = WTF.distance(self.position(), e.position());
+            if (distance < range) {
+                hits.push(e);
+            }
+        });
         self.element.trigger("hits", { hits: hits });
         setTimeout(function () {
             self.element.fadeOut("fast", function () {

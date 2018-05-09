@@ -337,7 +337,7 @@ WTF.Abilities.Bomb = WTF.Abilities.Abstract.extend({
         var self = this;
         bomb.exploded = true;
         var explosion = new WTF.Effects.Explosion({
-            duration: 2,
+            duration: 1,
             width: 100,
             height: 100,
         });
@@ -362,7 +362,7 @@ WTF.Abilities.Bomb = WTF.Abilities.Abstract.extend({
                 self.damage(hit);
             });
         });
-        explosion.show(bomb.position());
+        explosion.show(bomb.position(), self.options.range.max);
     },
     use: function () {
         var self = this;
@@ -741,15 +741,15 @@ WTF.Abilities.Trap = WTF.Abilities.Abstract.extend({
             clearTimeout(trap.timeout);
             clearInterval(trap.interval);
             trap.destroy();
+            trap.element.remove();
         }, self.options.cooldown * 1000);
         trap.interval = setInterval(function(){
             WTF.objects.forEach(element => {
                 if (WTF.overlaps(trap, element)) {
                     trap.element.trigger("hit", element);
-                    clearInterval(trap.interval);
                 }
             });
-        }, .1);
+        }, 100);
         trap.element.on("hit", function(e, hit) {
             if (!hit.type) 
                 return;
@@ -759,12 +759,18 @@ WTF.Abilities.Trap = WTF.Abilities.Abstract.extend({
                 return;
             trap.activated = true;
             hit.options.movable = false;
+            hit.element.stop(true, false);
+            hit.behavior.stop();
+            
             setTimeout(function() {
                 hit.options.movable = true;
-                clearTimeout(trap.timeout);
-                clearInterval(trap.interval);
-                trap.destroy();
+                hit.behavior.start();
             }, self.options.duration * 1000);
+            
+            clearTimeout(trap.timeout);
+            clearInterval(trap.interval);
+            trap.destroy();
+            trap.element.remove();
         });
         return true;
     }
