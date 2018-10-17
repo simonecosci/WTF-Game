@@ -36,18 +36,18 @@ return [
     ],
     
     'facebook' => [
-        'client_id' => '152452958776176',
-        'client_secret' => '29a5667e23ba1860fa7b74585984b36b',
+        'client_id' => env('FB_CLIENT_ID'),
+        'client_secret' => env('FB_SECRET'),
         'redirect' => config('app.url') . '/callback/facebook',
     ],
     'twitter' => [
-        'client_id' => 't8Mx8sOEDAEfEcqojthOQseUm',
-        'client_secret' => 'FdwbywLcKitzAG4uvMXkXHaYcfdSmYjvbsiCLU9ExmZTBiOgU9',
+        'client_id' => env('TT_CLIENT_ID'),
+        'client_secret' => env('TT_SECRET'),
         'redirect' => config('app.url') . '/callback/twitter',
     ],
     'google' => [
-        'client_id' => '766273638890-v5u9dkth451rfgrof5bpo2er2pojlb0a.apps.googleusercontent.com',
-        'client_secret' => 'KtKOQqCr0bmhiGhDhyGplvBN',
+        'client_id' => env('GP_CLIENT_ID'),
+        'client_secret' => env('GP_SECRET'),
         'redirect' => config('app.url') . '/callback/google',
     ],
 ];
