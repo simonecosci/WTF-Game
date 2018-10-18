@@ -3,8 +3,8 @@
 return [
 
     'recaptcha' => true,
-    'RE_CAP_SITE' => '6LewbE4UAAAAAH_oEzDlR5W5cLLiwJAMJ7wsxiqC',
-    'RE_CAP_SECRET' => '6LewbE4UAAAAANLYWyLqO3027K3XtTfOb8o0z2V4',
+    'RE_CAP_SITE' => env('RE_CAP_SITE'),
+    'RE_CAP_SECRET' => env('RE_CAP_SECRET'),
 	
     /*
     |--------------------------------------------------------------------------
