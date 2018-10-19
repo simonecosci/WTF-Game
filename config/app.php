@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://wtf-game.com'),
+    'url' => env('APP_URL', 'http://wtf-game.simonecosci.com'),
 
     /*
     |--------------------------------------------------------------------------
