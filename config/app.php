@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://wtf-game.simonecosci.com'),
+    'url' => env('APP_URL', 'http://wtf-game.simonecosci.loc'),
 
     /*
     |--------------------------------------------------------------------------
