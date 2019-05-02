@@ -1,5 +1,5 @@
 {
-    "name": "simonecosci/WTF-Game",
+    "name": "simonecosci/wtf-game",
     "description": "The DOM Game made with kendo and Laravel Framework.",
     "keywords": ["kendo", "laravel"],
     "license": "MIT",
